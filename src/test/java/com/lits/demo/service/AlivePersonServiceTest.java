@@ -32,7 +32,7 @@ public class AlivePersonServiceTest {
         when(personMapperMock.toDto(person)).thenReturn(personDto);
         when(personMapperMock.toEntity(personDto)).thenReturn(person);
 
-        when(personDataRepositoryMock.save (person)).thenReturn(person);
+        when(personDataRepositoryMock.save(person)).thenReturn(person);
 
         assertNotNull(
         alivePersonService.save(personDto));
