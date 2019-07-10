@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service ("alive")
@@ -28,8 +29,13 @@ public class AlivePersonService implements PersonService {
     }
 
     @Override
-    public List<Person> getAllPersons (){
-        return personDataRepository.findAll();
+    public List<PersonDto> getAllPersons (){
+        Iterable<Person> personIterable = personDataRepository.findAll();
+        List<PersonDto> personDtoList = new ArrayList<>();
+        for (Person iteratorNext : personIterable){
+            personDtoList.add(personMapper.toDto(iteratorNext));
+        }
+        return personDtoList;
 
 
 //        if () {    - тут написано як працює логер від лобмоку
@@ -44,4 +50,11 @@ public class AlivePersonService implements PersonService {
         return personMapper.toDto(personDataRepository.save(entity));
     }
 
+    @Override
+    public String deleteById(Integer id) {
+        Person personToBeDeleted = new Person();
+        personToBeDeleted.setId(id);
+        personDataRepository.delete(personToBeDeleted);
+        return "Person with id "+id+" deleted!";
+    }
 }

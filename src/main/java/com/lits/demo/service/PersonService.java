@@ -9,7 +9,9 @@ public interface PersonService {
 
     PersonDto getById (Integer Id);
 
-    List<Person> getAllPersons();
+    List<PersonDto> getAllPersons();
 
     PersonDto save (PersonDto personDto);
+
+    String deleteById (Integer id);
 }

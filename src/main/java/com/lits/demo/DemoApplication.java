@@ -1,9 +1,9 @@
 package com.lits.demo;
 
+import com.lits.demo.entity.Person;
 import com.lits.demo.model.User;
+import com.lits.demo.repository.PersonDataRepository;
 import com.lits.demo.repository.UserDataRepository;
-import io.swagger.jaxrs.config.BeanConfig;
-import javax.ws.rs.core.Application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -12,11 +12,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @SpringBootApplication
-public class DemoApplication extends Application implements ApplicationRunner {
+public class DemoApplication implements ApplicationRunner {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -24,24 +21,13 @@ public class DemoApplication extends Application implements ApplicationRunner {
 	@Autowired
 	UserDataRepository userDataRepository;
 
+	@Autowired
+	PersonDataRepository personDataRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	public DemoApplication() {
-		BeanConfig beanConfig = new BeanConfig();
-		beanConfig.setVersion("1.0.0");
-		beanConfig.setBasePath("/api");
-		beanConfig.setResourcePackage("org.jazzteam");
-		beanConfig.setScan(true);
-	}
-	@Override
-	public Set<Class<?>> getClasses() {
-		Set<Class<?>> resources = new HashSet();
-		resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
-		resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
-		return resources;
-	}
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		User user = new User();
@@ -50,5 +36,20 @@ public class DemoApplication extends Application implements ApplicationRunner {
 		user.setPassword(passwordEncoder.encode("123"));
 		user.setRole("ADMIN");
 		userDataRepository.save(user);
+
+		Person person = new Person();
+		person.setPersonName("John");
+		person.setAge(17);
+		personDataRepository.save(person);
+
+		Person person2 = new Person();
+		person2.setPersonName("Jack Sparrow");
+		person2.setAge(15);
+		personDataRepository.save(person2);
+
+		Person person3 = new Person();
+		person3.setPersonName("Jack Sparrow");
+		person3.setAge(15);
+		personDataRepository.save(person3);
 	}
 }

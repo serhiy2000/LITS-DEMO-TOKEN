@@ -15,7 +15,7 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
-    private String username;
+    private String personName;
     private Integer age;
     private boolean dead;
 }

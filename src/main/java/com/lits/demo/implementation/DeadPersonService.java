@@ -25,21 +25,22 @@ public class DeadPersonService implements PersonService {
 
     @Override
     public PersonDto getById(Integer Id) {
-
         return null;
     }
 
     @Override
-    public List<Person> getAllPersons (){
+    public List<PersonDto> getAllPersons (){
         return null;
-
     }
 
     @Override
-
         public PersonDto save(PersonDto personDto) {
             Person entity = personMapper.toEntity(personDto) ;
+            return null;
+    }
 
-            return personMapper.toDto(personDataRepository.save(entity));
+    @Override
+    public String deleteById(Integer id) {
+        return null;
     }
 }

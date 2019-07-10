@@ -2,8 +2,14 @@ package com.lits.demo.repository;
 
 import com.lits.demo.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface PersonDataRepository extends JpaRepository<Person, Integer> {
+import java.util.List;
+
+public interface PersonDataRepository extends CrudRepository<Person, Integer> {
     Person findOneById(Integer id);
 
+    List<Person> findByPersonName (String personName);
+
+    String deleteById (Integer id);
 }
