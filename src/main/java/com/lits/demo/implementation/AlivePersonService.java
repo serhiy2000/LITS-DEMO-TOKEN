@@ -52,9 +52,7 @@ public class AlivePersonService implements PersonService {
 
     @Override
     public String deleteById(Integer id) {
-        Person personToBeDeleted = new Person();
-        personToBeDeleted.setId(id);
-        personDataRepository.delete(personToBeDeleted);
-        return "Person with id "+id+" deleted!";
+        personDataRepository.delete(personDataRepository.findOneById(id));
+        return "Person with id " + id +" deleted!";
     }
 }
