@@ -31,11 +31,8 @@ public class AlivePersonServiceTest {
         Person person = new Person();
         when(personMapperMock.toDto(person)).thenReturn(personDto);
         when(personMapperMock.toEntity(personDto)).thenReturn(person);
-
         when(personDataRepositoryMock.save(person)).thenReturn(person);
-
-        assertNotNull(
-        alivePersonService.save(personDto));
+        assertNotNull(alivePersonService.save(personDto));
     }
 
     @Test
@@ -44,8 +41,5 @@ public class AlivePersonServiceTest {
         when(personDataRepositoryMock.findOneById(1)).thenReturn(person);
         alivePersonService.getById(1);
         verify(personDataRepositoryMock).findOneById(1);
-
     }
-
-
 }
