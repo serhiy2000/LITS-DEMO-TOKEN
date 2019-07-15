@@ -42,4 +42,13 @@ public class AlivePersonServiceTest {
         alivePersonService.getById(1);
         verify(personDataRepositoryMock).findOneById(1);
     }
+
+//    @Test
+//    public void shouldGetPerson(){
+//        Person person = new Person();
+//        when(personDataRepositoryMock.findOneById(1)).thenReturn(person);
+//        alivePersonService.getById(1);
+//        verify(personDataRepositoryMock).findOneById(1);
+//    }
+
 }

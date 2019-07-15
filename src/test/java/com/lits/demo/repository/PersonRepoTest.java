@@ -1,4 +1,4 @@
-package com.lits.demo.service;
+package com.lits.demo.repository;
 
 import com.lits.demo.entity.Person;
 import com.lits.demo.repository.PersonDataRepository;
