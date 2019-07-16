@@ -1,6 +1,6 @@
 package com.lits.demo.controller;
 
-import com.lits.demo.model.User;
+import com.lits.demo.entity.User;
 import com.lits.demo.service.UserAuthService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,26 +31,5 @@ public class UserAuthController {
         return ResponseEntity.ok(userAuthService.auth(user.getUsername(), user.getPassword()));
     }
 
-//
-//    @PostMapping
-//    public User savePerson (@RequestBody User user){
-//
-//        return UserServiceImpl.save(user);
-//    }
-//}
-//
-//@RequestMapping (value = "/api/users")
-//public class UserController {
-//
-//    @PostMapping
-//    public ResponseEntity<?> signup(@RequestBody User user) {
-//        return ResponseEntity.ok(userAuthService.auth(user.getUsername(), user.getPassword()));
-//    }
 
-//    @PostMapping
-//    public User saveUser(@RequestBody User user) {
-//        UserServiceImpl.save(user);
-//        return user;
-//    }
-//}
 }

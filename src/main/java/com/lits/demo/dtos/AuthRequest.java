@@ -4,11 +4,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class AuthRequest {
-    @NotEmpty
+//    @NotEmpty
     @Size(max = 64)
     private String username;
 
-    @NotEmpty
+//    @NotEmpty
     @Size(max = 32)
     private String password;
 

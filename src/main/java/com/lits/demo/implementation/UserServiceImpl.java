@@ -1,6 +1,6 @@
 package com.lits.demo.implementation;
 
-import com.lits.demo.model.User;
+import com.lits.demo.entity.User;
 import com.lits.demo.repository.UserDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,8 +28,9 @@ public class UserServiceImpl implements UserDetailsService {
     return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN")));
     }
 
-    public User save (User user){
-        userDataRepository.save(user);
-        return user;
+
+    public User saveUser (User user){
+//        User userEntity = userMapper.toUser(userDto);
+        return userDataRepository.save(user);
     }
 }

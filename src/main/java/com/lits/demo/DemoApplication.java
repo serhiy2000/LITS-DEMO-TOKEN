@@ -1,7 +1,7 @@
 package com.lits.demo;
 
 import com.lits.demo.entity.Person;
-import com.lits.demo.model.User;
+import com.lits.demo.entity.User;
 import com.lits.demo.repository.PersonDataRepository;
 import com.lits.demo.repository.UserDataRepository;
 
