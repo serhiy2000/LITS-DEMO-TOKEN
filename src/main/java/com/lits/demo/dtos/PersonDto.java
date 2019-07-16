@@ -1,8 +1,12 @@
 package com.lits.demo.dtos;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+//@Data
+@Setter
+@Getter
 public class PersonDto {
     private Integer Id;
     private String personName;
