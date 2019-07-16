@@ -13,5 +13,5 @@ public interface PersonService {
 
     PersonDto save (PersonDto personDto);
 
-    String deleteById (Integer id);
+    void deleteById (Integer id);
 }

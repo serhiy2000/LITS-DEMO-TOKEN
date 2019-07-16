@@ -32,8 +32,8 @@ public class PersonController {
     }
 
     @PostMapping (value = "/delete/{id}")
-    public String message (@PathVariable Integer id){
-        return alivePersonService.deleteById(id);
+    public void message (@PathVariable Integer id){
+        alivePersonService.deleteById(id);
     }
 
 }

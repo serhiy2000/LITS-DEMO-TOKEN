@@ -32,8 +32,8 @@ public class DemoApplication implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		User user = new User();
 		user.setUsername("loco");
-//		user.setPassword("$2a$10$xIqXZRbKo96Y/h1uZa1eAuo53cNHIJffo5lqLsnLdhzfSpVB/XPoq");
-		user.setPassword(passwordEncoder.encode("123"));
+		user.setPassword("$2a$10$xIqXZRbKo96Y/h1uZa1eAuo53cNHIJffo5lqLsnLdhzfSpVB/XPoq");
+//		user.setPassword(passwordEncoder.encode("123"));
 		user.setRole("ADMIN");
 		userDataRepository.save(user);
 
