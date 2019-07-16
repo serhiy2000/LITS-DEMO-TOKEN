@@ -1,6 +1,7 @@
 package com.lits.demo.implementation;
 
 import com.lits.demo.entity.User;
+import com.lits.demo.exception.MyException;
 import com.lits.demo.repository.UserDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,9 +29,21 @@ public class UserServiceImpl implements UserDetailsService {
     return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN")));
     }
 
-
-    public User saveUser (User user){
-//        User userEntity = userMapper.toUser(userDto);
-        return userDataRepository.save(user);
-    }
+    public User saveUser (User user) {
+        String userNull = null;
+        try {userNull = userDataRepository.findOneByUsername(user.getUsername()).getUsername();
+        } catch (NullPointerException e){
+            System.out.println("I did manage to locate f**king Nullpointer!!!!");
+        }
+            if (userNull == null)
+        {
+            return userDataRepository.save(user);
+        }
+            else if (user.getUsername().equals(userDataRepository.findOneByUsername(user.getUsername()).getUsername()))
+            {
+                throw new MyException("User is in DB already");
+            } else {
+                throw new MyException("something is wrong in saveUser from userServiceImpl");
+            }
+        }
 }

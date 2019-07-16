@@ -14,4 +14,6 @@ public interface PersonService {
     PersonDto save (PersonDto personDto);
 
     void deleteById (Integer id);
+
+    Person getByName (String name);
 }
