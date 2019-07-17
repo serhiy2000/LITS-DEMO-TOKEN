@@ -22,6 +22,11 @@ public class PersonController {
         return alivePersonService.getAllPersons();
     }
 
+    @GetMapping (value = "/car/{name}/{car}")
+    public List<PersonDto> getByNameAndCar (@PathVariable String name, @PathVariable String car){
+        return alivePersonService.getByNameAndCar(name, car);
+    }
+
     @GetMapping(value = "/{id}")
     public PersonDto getPersonById(@PathVariable Integer id) {
         return alivePersonService.getById(id);

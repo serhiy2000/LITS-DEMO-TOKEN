@@ -24,7 +24,6 @@ public class UserAuthController {
     @PostMapping(value = "/login")
     @ApiOperation("auth")
     public ResponseEntity<?> auth(@RequestBody User user){
-        System.out.println("user.getUsername() from UserAuthController (the same as in POST command): "+user.getUsername()); // here works. userName = is the same as in POST request
         return ResponseEntity.ok(userAuthService.auth(user.getUsername(), user.getPassword()));
     }
 }

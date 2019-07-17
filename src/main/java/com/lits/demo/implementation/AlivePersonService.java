@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service ("alive")
 @Slf4j
@@ -43,7 +44,6 @@ public class AlivePersonService implements PersonService {
         return personDataRepository.findOneByPersonName(personName);
     }
 
-
 //        if () {    - тут написано як працює логер від лобмоку
 //            throw new RuntimeException("User not found");
 //            log.error("User not found");
@@ -60,5 +60,13 @@ public class AlivePersonService implements PersonService {
         Person personToBeDeleted = new Person();
         personToBeDeleted.setId(id);
         personDataRepository.delete(personToBeDeleted);
+    }
+
+    @Override
+    public List<PersonDto> getByNameAndCar(String name, String car) {
+        List<Person> iterable = personDataRepository.findByNameAndCar(name, car);
+        return iterable.stream()
+                .map(person -> personMapper.toDto(person))
+                .collect(Collectors.toList());
     }
 }

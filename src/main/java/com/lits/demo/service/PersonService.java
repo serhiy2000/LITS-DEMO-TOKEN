@@ -16,4 +16,6 @@ public interface PersonService {
     void deleteById (Integer id);
 
     Person getByName (String name);
+
+    List<PersonDto> getByNameAndCar (String name, String car);
 }
