@@ -10,23 +10,24 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableJpaRepositories
-@ComponentScan (value = "com.lits.demo")
+
 @SpringBootApplication
 public class DemoApplication implements ApplicationRunner {
-
-	@Autowired
-	private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	UserDataRepository userDataRepository;
 
 	@Autowired
 	PersonDataRepository personDataRepository;
+
+	@Bean
+	PasswordEncoder getEncoder() {
+		return new BCryptPasswordEncoder();
+	} // when I inserted this bean - the test runs ok!
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);

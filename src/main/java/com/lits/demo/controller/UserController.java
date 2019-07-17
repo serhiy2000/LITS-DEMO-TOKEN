@@ -31,11 +31,4 @@ public class UserController {
 //    public ResponseEntity<?> signup(@RequestBody User user) {
 //        return ResponseEntity.ok(userAuthService.auth(user.getUsername(), user.getPassword()));
 //    }
-
-//    @PostMapping
-//    public User saveUser(@RequestBody User user) {
-//        UserServiceImpl.save(user);
-//        return user;
-//    }
-//}
-//}
+//
