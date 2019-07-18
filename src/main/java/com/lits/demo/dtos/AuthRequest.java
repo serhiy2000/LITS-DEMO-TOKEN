@@ -1,6 +1,5 @@
 package com.lits.demo.dtos;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class AuthRequest {
