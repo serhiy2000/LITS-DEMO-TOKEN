@@ -8,7 +8,6 @@ import com.lits.demo.mapper.PersonMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,20 +28,25 @@ public class AlivePersonService implements PersonService {
     }
 
     @Override
-    public List<PersonDto> getAllPersons (){
+    public List<PersonDto> getAllPersons () {
         Iterable<Person> personIterable = personDataRepository.findAll();
         List<PersonDto> personDtoList = new ArrayList<>();
-        for (Person iteratorNext : personIterable){
+        for (Person iteratorNext : personIterable) {
             personDtoList.add(personMapper.toDto(iteratorNext));
         }
         return personDtoList;
+    }
+
+    @Override
+    public Person getByName (String personName){
+        return personDataRepository.findOneByPersonName(personName);
+    }
 
 
 //        if () {    - тут написано як працює логер від лобмоку
 //            throw new RuntimeException("User not found");
 //            log.error("User not found");
 //        }
-    }
 
     @Override
     public PersonDto save(PersonDto personDto) {
@@ -51,8 +55,9 @@ public class AlivePersonService implements PersonService {
     }
 
     @Override
-    public String deleteById(Integer id) {
-        personDataRepository.delete(personDataRepository.findOneById(id));
-        return "Person with id " + id +" deleted!";
+    public void deleteById(Integer id) {
+        Person personToBeDeleted = new Person();
+        personToBeDeleted.setId(id);
+        personDataRepository.delete(personToBeDeleted);
     }
 }

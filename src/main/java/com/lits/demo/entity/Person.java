@@ -1,14 +1,15 @@
 package com.lits.demo.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @Entity
 @Table (name = "person")
 //@ToString(exclude = {"id" , "age" , "dead"})
 //@EqualsAndHashCode(exclude = {"id"})
-@Data
+@Setter
+@Getter
+//@Data
 //@Builder - цей елеметент ломбоку створює пустий конструктор
 public class Person {
     @Id

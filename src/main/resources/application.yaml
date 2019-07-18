@@ -18,4 +18,4 @@ security:
     secret:
       "AVENGERS"
     expiry:
-      24
+      360
